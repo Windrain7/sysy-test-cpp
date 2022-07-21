@@ -14,4 +14,19 @@ enum UOP {
     UOP_ADD, UOP_MINUS, UOP_NOT
 };
 
+enum AOP {
+    AOP_ADD, AOP_MINUS
+};
+
+enum MOP {
+    MOP_MUL, MOP_DIV, MOP_MOD
+};
+
+enum ROP {
+    ROP_GTE, ROP_LTE, ROP_GT, ROP_LT
+};
+
+enum EOP {
+    EOP_EQ, EOP_NEQ
+};
 #endif //TEST_DEFINE_H
