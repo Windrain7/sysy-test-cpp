@@ -185,7 +185,7 @@ ConstInitValList:ConstInitValList COMMA ConstInitVal {
 
 // 变量声明
 VarDecl:	BType VarDefList SEMICOLON {
-				auto t = (VarDeclAST*) $1;
+				auto t = new VarDeclAST();
 				t->bType = unique_ptr<BaseAST>($1);
 				t->varDefList = unique_ptr<BaseAST>($2);
 				$$ = t;
@@ -527,7 +527,7 @@ Number:	 INT {
    		|FLOAT {
 			auto t = new NumberAST();
 			t->isInt = false;
-			t->intval = $1;
+			t->floatval = $1;
 			$$ = t;
 		}		
    		;

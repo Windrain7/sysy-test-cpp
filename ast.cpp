@@ -338,7 +338,7 @@ void Printer::visit(FuncDefAST &ast) {
     cout << "FuncDefAST:" << endl;
     depth += 2;
     ast.funcType->accept(*this);
-    PUT(depth); cout << "ID:" << *ast.id << endl;
+    PUT(depth); cout << "id:" << *ast.id << endl;
     if (ast.funcFParamList != nullptr) ast.funcFParamList->accept(*this);
     ast.blockAst->accept(*this);
     depth -= 2;
@@ -367,7 +367,7 @@ void Printer::visit(VoidTypeAST &ast) {
 
 void Printer::visit(FuncFParamListAST &ast) {
     PUT(depth);
-    cout << "FuncFParamListAST" << endl;
+    cout << "FuncFParamListAST:" << endl;
     depth += 2;
     for (auto &i : ast.list) {
         i->accept(*this);
@@ -380,8 +380,12 @@ void Printer::visit(FuncFParamAST &ast) {
     cout << "FuncFParamAST:" << endl;
     depth += 2;
     ast.bType->accept(*this);
-    PUT(depth); cout << "ID:" << *ast.id << endl;
-    if (ast.isArray) cout << "Array:first dimension" << endl;
+    PUT(depth); cout << "id:" << *ast.id << endl;
+    if (ast.isArray) {
+        PUT(depth);
+        cout << "Array:first dimension" << endl;
+
+    }
     if (ast.expArrays != nullptr) {
         ast.expArrays->accept(*this);
     }
@@ -391,11 +395,11 @@ void Printer::visit(FuncFParamAST &ast) {
 void Printer::visit(ExpArraysAST &ast) {
     PUT(depth);
     cout << "ExpArraysAST:" << endl;
-    depth -= 2;
+    depth += 2;
     for (auto &i : ast.list) {
         i->accept(*this);
     }
-    depth += 2;
+    depth -= 2;
 }
 
 void Printer::visit(BlockAST &ast) {
@@ -439,6 +443,7 @@ void Printer::visit(StmtAST &ast) {
             ast.lVal->accept(*this);
             ast.exp->accept(*this);
             depth -= 2;
+            break;
         case EXP:
             cout << endl;
             depth += 2;
@@ -528,7 +533,7 @@ void Printer::visit(CondAST &ast) {
 
 void Printer::visit(AddExpAST &ast) {
     PUT(depth);
-    cout << "AddExpAST" <<endl;
+    cout << "AddExpAST:" <<endl;
     depth += 2;
     if (ast.addExp != nullptr) {
         ast.addExp->accept(*this);
@@ -543,7 +548,7 @@ void Printer::visit(AddExpAST &ast) {
 
 void Printer::visit(MulExpAST &ast) {
     PUT(depth);
-    cout << "MulExpAST" << endl;
+    cout << "MulExpAST:" << endl;
     depth += 2;
     if (ast.mulExp != nullptr) {
         ast.mulExp->accept(*this);
@@ -587,8 +592,8 @@ void Printer::visit(UnaryOpAST &ast) {
 
 void Printer::visit(PrimaryExpAST &ast) {
     PUT(depth);
-    depth += 2;
     cout << "PrimaryExpAST:" << endl;
+    depth += 2;
     if (ast.exp != nullptr) {
         ast.exp->accept(*this);
     } else if (ast.lval != nullptr) {
@@ -604,7 +609,7 @@ void Printer::visit(CallAST &ast) {
     cout << "CallAST:" << endl;
     depth += 2;
     PUT(depth);
-    cout << "ID" << (*ast.id) << endl;
+    cout << "id:" << (*ast.id) << endl;
     if (ast.funcCParamList != nullptr) ast.funcCParamList->accept(*this);
     depth -= 2;
 }
@@ -621,9 +626,9 @@ void Printer::visit(FuncCParamListAST &ast) {
 
 void Printer::visit(LValAST &ast) {
     PUT(depth);
+    cout << "LValAST:" << endl;
     depth += 2;
-    PUT(depth);
-    cout << "ID" << (*ast.id) << endl;
+    PUT(depth);cout << "id:" << (*ast.id) << endl;
     if (ast.expArrays != nullptr) ast.expArrays->accept(*this);
     depth -= 2;
 }
@@ -669,6 +674,7 @@ void Printer::visit(EqExpAST &ast) {
 
 void Printer::visit(LAndExpAST &ast) {
     PUT(depth);
+    cout << "LAndExpAST:" << endl;
     depth += 2;
     if (ast.lAndExp != nullptr) {
         ast.lAndExp->accept(*this);
@@ -681,6 +687,7 @@ void Printer::visit(LAndExpAST &ast) {
 
 void Printer::visit(LOrExpAST &ast) {
     PUT(depth);
+    cout << "LOrExpAST:" << endl;
     depth += 2;
     if (ast.lOrExp != nullptr) {
         ast.lOrExp->accept(*this);
