@@ -1,5 +1,5 @@
-parser: parser.cpp tokens.cpp main.cpp ast.cpp
-	clang++ -o parser parser.cpp tokens.cpp main.cpp ast.cpp
+parser: parser.cpp tokens.cpp main.cpp ast.cpp printer.cpp
+	clang++ -o parser parser.cpp tokens.cpp main.cpp ast.cpp printer.cpp
 parser.cpp: parser.y
 	bison -d -o parser.cpp parser.y  
 tokens.cpp: tokens.l 

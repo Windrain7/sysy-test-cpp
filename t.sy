@@ -1,33 +1,4 @@
-int n, a[2];
-float b, c[2];
-void f() {
-    return;
-}
-int fib(int p, int a[], int b[][2]){
-	int a;
-	int b;
-	int c;
-	a = 0;
-	b = 1;
-	if ( p == 0 ){
-		return 0;
-	}
-	if ( p == 1 ){
-		return 1;
-	} else {
-		while ( p > 1 ){
-    		c = a + b;
-    		a = b;
-    		b = c;
-    		p = p - 1;
-    	}
-	}
-	return c;
-}
-int main(){
-	int res;
-	int n = 1, a[2];
-    float b = 1.243, c[2];
-	res = fib( n );
-	return res;
+int main() {
+    int a = 3.5;
+    return 0;
 }

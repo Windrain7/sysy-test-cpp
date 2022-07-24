@@ -1,5 +1,5 @@
 #include <iostream>
-#include "ast.h"
+#include "printer.h"
 extern unique_ptr<BaseAST> root;
 extern int yyparse();
 extern FILE *yyin;
