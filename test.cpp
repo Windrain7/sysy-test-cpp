@@ -3,10 +3,55 @@
 #include "ast.h"
 
 using namespace std;
-class Node {
-public:
-    unique_ptr<string> s;
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 int main() {
     for (int i = 0; i < 10000; i++) {
         Node* n = new Node();

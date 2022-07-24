@@ -29,4 +29,9 @@ enum ROP {
 enum EOP {
     EOP_EQ, EOP_NEQ
 };
+
+enum TYPE {
+    TYPE_VOID, TYPE_INT, TYPE_FLOAT
+};
+
 #endif //TEST_DEFINE_H

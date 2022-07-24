@@ -24,7 +24,9 @@ void Printer::visit(ConstDeclAST &ast) {
     PUT(depth);
     cout << "ConstDeclAST:" << endl;
     depth += 2;
-    ast.bType->accept(*this);
+    PUT(depth);
+    if (ast.bType == TYPE_INT) cout << "BType:int" << endl;
+    else cout << "BType:float" << endl;
     ast.constDefListAST->accept(*this);
     depth -= 2;
 }
@@ -98,7 +100,9 @@ void Printer::visit(VarDeclAST &ast) {
     PUT(depth);
     cout << "VarDeclAST：" << endl;
     depth += 2;
-    ast.bType->accept(*this);
+    PUT(depth);
+    if (ast.bType == TYPE_INT) cout << "BType:int" << endl;
+    else if (ast.bType == TYPE_FLOAT) cout << "BType:float" << endl;
     ast.varDefList->accept(*this);
     depth -= 2;
 }
@@ -152,7 +156,10 @@ void Printer::visit(FuncDefAST &ast) {
     PUT(depth);
     cout << "FuncDefAST:" << endl;
     depth += 2;
-    ast.funcType->accept(*this);
+    PUT(depth);
+    if (ast.funcType == TYPE_VOID) cout << "funcType:void" << endl;
+    else if (ast.funcType == TYPE_INT) cout << "funcType:int" << endl;
+    else cout << "funcType:float" << endl;
     PUT(depth); cout << "id:" << *ast.id << endl;
     if (ast.funcFParamList != nullptr) ast.funcFParamList->accept(*this);
     ast.blockAst->accept(*this);
@@ -168,17 +175,17 @@ void Printer::visit(FuncDefAST &ast) {
 //    depth -= 2;
 //}
 
-void Printer::visit(BTypeAST &ast) {
-    PUT(depth);
-    cout << "BTypeAST:";
-    if (ast.isInt) cout << "int" << endl;
-    else cout << "float" << endl;
-}
-
-void Printer::visit(VoidTypeAST &ast) {
-    PUT(depth);
-    cout << "VoidTypeAST:void" << endl;
-}
+//void Printer::visit(BTypeAST &ast) {
+//    PUT(depth);
+//    cout << "BTypeAST:";
+//    if (ast.isInt) cout << "int" << endl;
+//    else cout << "float" << endl;
+//}
+//
+//void Printer::visit(VoidTypeAST &ast) {
+//    PUT(depth);
+//    cout << "VoidTypeAST:void" << endl;
+//}
 
 void Printer::visit(FuncFParamListAST &ast) {
     PUT(depth);
@@ -194,7 +201,9 @@ void Printer::visit(FuncFParamAST &ast) {
     PUT(depth);
     cout << "FuncFParamAST:" << endl;
     depth += 2;
-    ast.bType->accept(*this);
+    PUT(depth);
+    if (ast.bType == TYPE_INT) cout << "BType:int" << endl;
+    else cout << "BType:float" << endl;
     PUT(depth); cout << "id:" << *ast.id << endl;
     if (ast.isArray) {
         PUT(depth);
@@ -386,24 +395,24 @@ void Printer::visit(UnaryExpAST &ast) {
     } else if (ast.call != nullptr) {
         ast.call->accept(*this);
     } else {
-//        PUT(depth);
-//        cout << "UnaryOp:";
-//        if (ast.op == UOP_ADD) cout << "+" <<endl;
-//        if (ast.op == UOP_MINUS) cout << "-" <<endl;
-//        if (ast.op == UOP_NOT) cout << "!" <<endl;
-        ast.unaryOp->accept(*this);
+        PUT(depth);
+        cout << "UnaryOp:";
+        if (ast.op == UOP_ADD) cout << "+" <<endl;
+        if (ast.op == UOP_MINUS) cout << "-" <<endl;
+        if (ast.op == UOP_NOT) cout << "!" <<endl;
+//        ast.unaryOp->accept(*this);
         ast.unaryExp->accept(*this);
     }
     depth -= 2;
 }
 
-void Printer::visit(UnaryOpAST &ast) {
-    PUT(depth);
-    cout << "UnaryOp:";
-    if (ast.op == UOP_ADD) cout << "+" << endl;
-    else if (ast.op == UOP_MINUS) cout << "-" << endl;
-    else cout << "!" <<endl;
-}
+//void Printer::visit(UnaryOpAST &ast) {
+//    PUT(depth);
+//    cout << "UnaryOp:";
+//    if (ast.op == UOP_ADD) cout << "+" << endl;
+//    else if (ast.op == UOP_MINUS) cout << "-" << endl;
+//    else cout << "!" <<endl;
+//}
 
 void Printer::visit(PrimaryExpAST &ast) {
     PUT(depth);

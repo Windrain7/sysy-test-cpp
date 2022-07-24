@@ -98,13 +98,13 @@ void IterationStmtAST::accept(Visitor &visitor) {
     visitor.visit(*this);
 }
 
-void BTypeAST::accept(Visitor &visitor) {
-    visitor.visit(*this);
-}
-
-void VoidTypeAST::accept(Visitor &visitor) {
-    visitor.visit(*this);
-}
+//void BTypeAST::accept(Visitor &visitor) {
+//    visitor.visit(*this);
+//}
+//
+//void VoidTypeAST::accept(Visitor &visitor) {
+//    visitor.visit(*this);
+//}
 
 void ExpAST::accept(Visitor &visitor) {
     visitor.visit(*this);
@@ -123,9 +123,9 @@ void UnaryExpAST::accept(Visitor &visitor) {
     visitor.visit(*this);
 }
 
-void UnaryOpAST::accept(Visitor &visitor) {
-    visitor.visit(*this);
-}
+//void UnaryOpAST::accept(Visitor &visitor) {
+//    visitor.visit(*this);
+//}
 
 void PrimaryExpAST::accept(Visitor &visitor) {
     visitor.visit(*this);
